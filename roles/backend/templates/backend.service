@@ -6,7 +6,7 @@ User={{app_user}}
 WorkingDirectory=/app
 Environment=DB_HOST="mysql-{{ env }}.janand.online"
 Environment=NEW_RELIC_APP_NAME=backend
-Environment=NEW_RELIC_LICENSE_KEY=NRAK-ZY8TFD3C1HL2QUOQB50L2PWAB4U
+Environment=NEW_RELIC_LICENSE_KEY=c8c580af1fe7ce00b9b514deb0295d53FFFFNRAL
 ExecStart=/bin/node -r newrelic /app/index.js
 SyslogIdentifier=backend
 
