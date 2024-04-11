@@ -22,4 +22,4 @@
 - name: Import newrelic
   ansible.builtin.import_role:
     name: newrelic
-    tasks_from: nginx
+    tasks_from: nginx.yml
