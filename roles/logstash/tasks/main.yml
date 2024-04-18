@@ -4,7 +4,7 @@
     dest: /etc/yum.repos.d/elastic.repo
 
 - name: install logstash
-  ansible.builtin.template:
+  ansible.builtin.dnf:
     name: logstash
     state: installed
 
