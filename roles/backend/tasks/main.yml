@@ -18,10 +18,10 @@
     name: common
     tasks_from: app-pre-req
 
-- name: Download NodeJS Dependencies
-  community.general.npm:
-    path: /app
-    state: latest
+#- name: Download NodeJS Dependencies
+#  community.general.npm:
+#    path: /app
+#    state: latest
 
 - name: Copy Backend Service file
   ansible.builtin.template:
