@@ -1,4 +1,6 @@
 component=$1
+env
+exit 1
 
 rm -rf ~/*.json
 ansible-playbook get-secrets.yml -e vault_token=$vault_token -e env=$env -e role_name=$component

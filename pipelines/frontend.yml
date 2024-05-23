@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  frontend:
+  expense-frontend:
     group: defaultGroup
     materials:
       git-7f8559b:
@@ -10,6 +10,8 @@ pipelines:
         branch: main
     secure_variables:
       vault_token: AES:rsFNC5K8WN5aliy5fraRpQ==:NEaOhSKi7Ks9CW+vP19ih3f8aIcEKDzAn48vnkBQsvk=
+    environment_variables:
+      APP_VERSION: ""
     stages:
       - Dev:
           fetch_materials: true
