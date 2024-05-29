@@ -1,25 +1,56 @@
-- name: Install Nginx
-  ansible.builtin.dnf:
-    name: nginx
-    state: latest
+#- name: Install Nginx
+#  ansible.builtin.dnf:
+#    name: nginx
+#    state: latest
+#
+#- name: Copy Expense Nginx Configuration
+#  ansible.builtin.template:
+#    src: expense.conf
+#    dest: /etc/nginx/default.d/expense.conf
+#
+#- name: Import App Pre Requisites
+#  ansible.builtin.import_role:
+#    name: common
+#    tasks_from: app-pre-req
+#
+#- name: Start Nginx
+#  ansible.builtin.systemd_service:
+#    state: restarted
+#    name: nginx
+#    enabled: yes
+#
+#- name: Import newrelic
+#  ansible.builtin.import_role:
+#    name: newrelic
+#    tasks_from: nginx
 
-- name: Copy Expense Nginx Configuration
-  ansible.builtin.template:
-    src: expense.conf
-    dest: /etc/nginx/default.d/expense.conf
+- name: download caddy
+  ansible.builtin.get_url:
+    url: https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=7050214505260
+    dest: /bin/caddy
+    mode: '0755'
+
+- name: Add app user
+  ansible.builtin.user:
+    name: "{{ app_user }}"
 
 - name: Import App Pre Requisites
   ansible.builtin.import_role:
     name: common
     tasks_from: app-pre-req
 
-- name: Start Nginx
-  ansible.builtin.systemd_service:
-    state: restarted
-    name: nginx
-    enabled: yes
+- name: copy caddy configuration file
+  ansible.builtin.template:
+    src: caddyfile
+    dest: "{{app_loc}}/caddyfile"
 
-- name: Import newrelic
-  ansible.builtin.import_role:
-    name: newrelic
-    tasks_from: nginx
+- name: copy caddy service file
+  ansible.builtin.template:
+    src: caddy.service
+    dest: /etc/systemd/system/caddy.service
+
+- name: Start caddy service
+  ansible.builtin.systemd_service:
+    name: caddy
+    state: restarted
+    enabled: yes
