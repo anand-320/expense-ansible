@@ -31,14 +31,6 @@
   ansible.builtin.debug:
     msg: "APP_LOC={{lookup('ansible.builtin.vars','app_loc')}}"
 
-- name: show variables
-  ansible.builtin.debug:
-    msg: "APP_LOC={{lookup('ansible.builtin.vars','app_loc')}}"
-
-- name: show variables
-  ansible.builtin.debug:
-    msg: "APP_LOC={{lookup('ansible.builtin.vars','app_loc')}}"
-
 
 - name: download code
   ansible.builtin.unarchive:
