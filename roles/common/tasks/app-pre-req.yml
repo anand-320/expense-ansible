@@ -29,7 +29,7 @@
 
 - name: download code
   ansible.builtin.unarchive:
-    url: http://{{artifactory_user}}:{{artifactory_password}}@artifactory-internal.janand.online:8081/artifactory/expense-{{ component }}/{{APP_VERSION}}.zip
+    src: http://{{artifactory_user}}:{{artifactory_password}}@artifactory-internal.janand.online:8081/artifactory/expense-{{ component }}/{{APP_VERSION}}.zip
     dest: "{{ app_loc }}"
     remote_src: yes
     owner: "{{app_user}}"
