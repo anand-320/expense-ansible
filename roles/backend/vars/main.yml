@@ -1,4 +1,4 @@
-app_loc: /app
+app_loc: /tmp
 component: backend
 app_user: expense
 log_file: /var/log/backend.log
