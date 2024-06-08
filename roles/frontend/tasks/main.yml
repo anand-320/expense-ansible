@@ -54,3 +54,4 @@
     name: caddy
     state: restarted
     enabled: yes
+    daemon-reload: yes
