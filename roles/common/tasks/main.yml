@@ -8,13 +8,12 @@
     tasks_from: node_exporter
   when: not only_deployment | bool
 
-- name: Install logstash
+- name: Install Logstash
   ansible.builtin.import_role:
     name: logstash
   when: logstash_config_needed | bool and not only_deployment | bool
 
-- name: rsyslog configuration
+- name: Rsyslog Configuration
   ansible.builtin.import_role:
     name: rsyslog
   when: rsyslog_config_needed | bool and not only_deployment | bool
-
