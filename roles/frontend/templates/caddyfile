@@ -15,6 +15,7 @@
     close
   }
   log {
+    except /health
     format json
     output stdout
   }
