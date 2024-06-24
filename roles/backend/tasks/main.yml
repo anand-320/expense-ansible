@@ -49,10 +49,10 @@
     login_password: "{{rds_password}}"
     login_host: "{{ rds_endpoint }}"
 
-- name: Import NewRelic NodeJS Setup
-  ansible.builtin.import_role:
-    name: newrelic
-    tasks_from: nodejs
+#- name: Import NewRelic NodeJS Setup
+#  ansible.builtin.import_role:
+#    name: newrelic
+#    tasks_from: nodejs
 
 - name: Start Backend Service
   ansible.builtin.systemd_service:
